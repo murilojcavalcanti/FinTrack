@@ -5,13 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace FinTrack.Infrastructure.UnitOfWork
 {
-    public class UnitOfWork : IUnitOfWork
+    public class UoF : IUoF
     {
         private readonly FinTrackDbContext _context;
 
-        public UnitOfWork(FinTrackDbContext context)
+        public UoF(FinTrackDbContext context)
         {
             _context = context;
         }
