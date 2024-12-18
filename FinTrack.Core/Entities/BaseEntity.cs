@@ -2,7 +2,7 @@
 {
     public class BaseEntity
     {
-        public BaseEntity(DateTime createdAt)
+        public BaseEntity()
         {
             CreatedAt = DateTime.Now;
             IsActive= true;
