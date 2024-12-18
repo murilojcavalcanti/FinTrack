@@ -9,10 +9,12 @@ namespace FinTrack.Core.Entities
 {
     internal class Balance : BaseEntity
     {
-        public Balance(DateTime createdAt, MonthEnum mes) : base(createdAt)
+        public Balance() : base( )
         {
-            Mes = mes;
+            Month = DateTime.UtcNow.Month;
+            Year = DateTime.UtcNow.Year;
         }
-        public MonthEnum Mes { get; private set; }
+        public int Month { get; private set; }
+        public int Year { get; private set; }
     }
 }
