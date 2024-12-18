@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FinTrack.Core.Repositories;
+using FinTrack.Core.UnitOfWork;
 using FinTrack.Infrastructure.Persistance;
+using FinTrack.Infrastructure.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,7 +30,12 @@ namespace FinTrack.Infrastructure
         }
         public static IServiceCollection AddRepositories(this IServiceCollection services, IConfiguration configuration)
         {
-            
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            return services;
+        }
+        public static IServiceCollection AddUnitOfWork(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddScoped<IUoF,UoF>();
             return services;
         }
     }
