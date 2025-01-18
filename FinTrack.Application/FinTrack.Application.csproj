@@ -11,4 +11,14 @@
     <ProjectReference Include="..\FinTrack.Infrastructure\FinTrack.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\Commands\DeleteCost\" />
+    <Folder Include="Services\Commands\UpdateCost\" />
+    <Folder Include="Services\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.4.1" />
+  </ItemGroup>
+
 </Project>
