@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinTrack.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -13,5 +14,7 @@ namespace FinTrack.Core.Repositories
         Task<T> Get(Expression<Func<T,bool>>predicate);
         Task<T> Insert(T Entity);
         Task Update(T Entity);
+        Task Delete(BaseEntity Entity);
+
     }
 }
