@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinTrack.Core.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace FinTrack.Core.UnitOfWork
 {
+
     public interface IUoF
     {
+        public ICostRepository CostRepository { get;}
         void Commit();
     }
 }
