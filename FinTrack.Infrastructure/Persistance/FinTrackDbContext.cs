@@ -12,6 +12,6 @@ namespace FinTrack.Infrastructure.Persistance
     {
         public FinTrackDbContext(DbContextOptions<FinTrackDbContext> opts):base(opts) { }
 
-        public User Users { get; set; }
+
     }
 }
