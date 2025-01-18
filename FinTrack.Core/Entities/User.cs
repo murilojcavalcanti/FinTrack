@@ -8,7 +8,7 @@ namespace FinTrack.Core.Entities
 {
     public class User : BaseEntity
     {
-        public User(DateTime createdAt, string name, string email, string password) : base(createdAt)
+        public User(string name, string email, string password) : base(DateTime.Now)
         {
             Name = name;
             Email = email;
@@ -17,6 +17,6 @@ namespace FinTrack.Core.Entities
 
         public string Name { get; private set; }
         public string Email { get; private set; }
-        public string Password { get; private set; 
+        public string Password { get; private set; }
     }
 }
