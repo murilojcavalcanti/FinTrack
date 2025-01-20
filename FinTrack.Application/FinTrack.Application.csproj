@@ -12,8 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\Commands\DeleteCost\" />
-    <Folder Include="Services\Commands\UpdateCost\" />
     <Folder Include="Services\Queries\" />
   </ItemGroup>
 
