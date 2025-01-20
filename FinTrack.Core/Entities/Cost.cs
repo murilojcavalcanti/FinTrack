@@ -16,5 +16,11 @@ namespace FinTrack.Core.Entities
 
         public decimal PriceCost { get; private set; }
         public string Description { get; private set; }
+
+        public void Update(decimal priceCost, string description)
+        {
+            PriceCost = priceCost;
+            Description = description;
+        }
     }
 }
