@@ -39,7 +39,7 @@ namespace FinTrack.API.Controllers
         {
             return Ok();
         }
-        [HttpGet("/GetById")]
+        [HttpGet("/GetByDate")]
         public async Task<IActionResult> GetByDateCost()
         {
             return Ok();
