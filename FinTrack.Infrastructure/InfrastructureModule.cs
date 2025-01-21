@@ -18,7 +18,7 @@ namespace FinTrack.Infrastructure
     {
         public static IServiceCollection AddInfrasctructure( this IServiceCollection services,IConfiguration configuration)
         {
-            services.AddData(configuration);
+            services.AddData(configuration).AddRepositories(configuration).AddUnitOfWork(configuration);
             return services;
         }
 
