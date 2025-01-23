@@ -1,11 +1,10 @@
-﻿
-
-
-using FinTrack.Application.Services.Commands.CreateCost;
+﻿using FinTrack.Application.Services.Commands.CostCommands.CreateCost;
+using FinTrack.Application.Services.Commands.CostCommands.DeleteCost;
+using FinTrack.Application.Services.Commands.CostCommands.UpdateCost;
+using FinTrack.Application.Services.Queries.GetAll;
+using FinTrack.Application.Services.Queries.GetById;
 using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using System.Runtime.CompilerServices;
 
 namespace FinTrack.API.Controllers
 {
@@ -32,12 +31,16 @@ namespace FinTrack.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllCost()
         {
-            return Ok();
+            var query = new GetAllCostQuery();
+            var result = await _mediator.Send(query);
+
+            return Ok(result);
         }
         [HttpGet("/GetById")]
-        public async Task<IActionResult> GetByIdCost()
+        public async Task<IActionResult> GetByIdCost(GetByIdCostQuery query)
         {
-            return Ok();
+            var result = _mediator.Send(query);
+            return Ok(result);
         }
         [HttpGet("/GetByDate")]
         public async Task<IActionResult> GetByDateCost()
@@ -51,14 +54,18 @@ namespace FinTrack.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateCost()
+        public async Task<IActionResult> UpdateCost(UpdateCostCommand  command)
         {
-            return Ok();
+            var result = await _mediator.Send(command);
+            if (!result.IsSuccess) return BadRequest(result.Messsage);
+            return Ok(result);
         }
         [HttpDelete]
-        public async Task<IActionResult> DeleteCost()
+        public async Task<IActionResult> DeleteCost(DeleteCostCommand command)
         {
-            return Ok();
+            var result = await _mediator.Send(command);
+            if (!result.IsSuccess) return BadRequest(result.Messsage);
+            return Ok(result);
         }
     }
 }
