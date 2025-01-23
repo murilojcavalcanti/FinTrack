@@ -1,5 +1,5 @@
 ﻿using FinTrack.Application.Models;
-using FinTrack.Application.Services.Commands.CreateCost;
+using FinTrack.Application.Services.Commands.CostCommands.CreateCost;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
