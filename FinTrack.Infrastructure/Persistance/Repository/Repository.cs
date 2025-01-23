@@ -24,12 +24,12 @@ namespace FinTrack.Infrastructure.Persistance.Repository
         
         public async Task<IEnumerable<T>> GetAll()
         {
-            return await _context.Set<T>().AsNoTracking().ToListAsync();
+            return await _context.Set<T>().Where(e=>e.IsActive==true).AsNoTracking().ToListAsync();
         }
         
         public async Task<T> Get(Expression<Func<T, bool>> predicate)
         {
-            return await _context.Set<T>().SingleOrDefaultAsync(predicate);
+            return await _context.Set<T>().Where(e=>e.IsActive==true).SingleOrDefaultAsync(predicate);
         }
 
 
