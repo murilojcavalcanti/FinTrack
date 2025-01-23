@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FinTrack.Application.Services.Commands.DeleteCost
+namespace FinTrack.Application.Services.Commands.CostCommands.DeleteCost
 {
-    public class DeleteCommand:IRequest<ResultViewModel>
+    public class DeleteCostCommand : IRequest<ResultViewModel>
     {
-        public DeleteCommand(int costId)
+        public DeleteCostCommand(int costId)
         {
             CostId = costId;
         }

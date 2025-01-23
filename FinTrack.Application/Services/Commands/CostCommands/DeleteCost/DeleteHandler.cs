@@ -1,5 +1,4 @@
 ﻿using FinTrack.Application.Models;
-using FinTrack.Application.Services.Commands.DeleteCost;
 using FinTrack.Core.UnitOfWork;
 using MediatR;
 using System;
@@ -8,21 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FinTrack.Application.Services.Commands.UpdateCost
+namespace FinTrack.Application.Services.Commands.CostCommands.DeleteCost
 {
-    public class UpdateHandler : IRequestHandler<UpdateCommand, ResultViewModel>
+    public class DeleteHandler : IRequestHandler<DeleteCostCommand, ResultViewModel>
     {
         private readonly IUoF _Uof;
 
-        public UpdateHandler(IUoF uof)
+        public DeleteHandler(IUoF uof)
         {
             _Uof = uof;
         }
-        public async Task<ResultViewModel> Handle(UpdateCommand request, CancellationToken cancellationToken)
+
+
+        public async Task<ResultViewModel> Handle(DeleteCostCommand request, CancellationToken cancellationToken)
         {
-            var Cost = _Uof.CostRepository.Get(c => c.Id == request.IdCost);
+            var Cost = _Uof.CostRepository.Get(c => c.Id == request.CostId);
             if (Cost.Result is null) return ResultViewModel.Error("Cost Not Found!");
-            Cost.Result.Update(request.PriceCost,request.DescriptionCost);
+            Cost.Result.setAsDeleted();
             _Uof.CostRepository.Update(Cost.Result);
             return ResultViewModel.Success();
         }

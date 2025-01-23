@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FinTrack.Application.Services.Commands.UpdateCost
+namespace FinTrack.Application.Services.Commands.CostCommands.UpdateCost
 {
-    public class UpdateCommand:IRequest<ResultViewModel>
+    public class UpdateCostCommand : IRequest<ResultViewModel>
     {
-        public UpdateCommand(decimal priceCost, string description, int idCost)
+        public UpdateCostCommand(decimal priceCost, string description, int idCost)
         {
 
             PriceCost = priceCost;
