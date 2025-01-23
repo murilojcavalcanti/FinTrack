@@ -2,9 +2,9 @@
 {
     public class BaseEntity
     {
-        public BaseEntity(DateTime createdAt)
+        public BaseEntity()
         {
-            CreatedAt = createdAt;
+            CreatedAt = DateTime.Now;
             IsActive= true;
             IsDeleted= false;
         }

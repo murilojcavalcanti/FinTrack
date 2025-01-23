@@ -8,7 +8,7 @@ namespace FinTrack.Core.Entities
 {
     public class Receive : BaseEntity
     {
-        public Receive(DateTime createdAt, string description, decimal valueReceive) : base(createdAt)
+        public Receive(string description, decimal valueReceive)
         {
             Description = description;
             ValueReceive = valueReceive;

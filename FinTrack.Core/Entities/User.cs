@@ -8,7 +8,7 @@ namespace FinTrack.Core.Entities
 {
     public class User : BaseEntity
     {
-        public User(string name, string email, string password) : base(DateTime.Now)
+        public User(string name, string email, string password) : base()
         {
             Name = name;
             Email = email;

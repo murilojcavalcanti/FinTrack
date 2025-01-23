@@ -9,7 +9,7 @@ namespace FinTrack.Core.Entities
 {
     internal class Balance : BaseEntity
     {
-        public Balance() : base(DateTime.Now)
+        public Balance() : base()
         {
             Month = DateTime.UtcNow.Month;
             Year = DateTime.UtcNow.Year;

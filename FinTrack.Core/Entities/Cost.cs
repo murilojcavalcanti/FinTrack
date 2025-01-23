@@ -8,7 +8,7 @@ namespace FinTrack.Core.Entities
 {
     public class Cost : BaseEntity
     {
-        public Cost(DateTime createdAt, decimal priceCost, string description) : base(createdAt)
+        public Cost( decimal priceCost, string description) : base()
         {
             PriceCost = priceCost;
             Description = description;
