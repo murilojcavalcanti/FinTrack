@@ -24,7 +24,7 @@ namespace FinTrack.Infrastructure
 
         public static IServiceCollection AddData(this IServiceCollection services, IConfiguration configuration)
         {
-            string conString = configuration.GetConnectionString("FinTrackDb");
+            string conString = configuration.GetConnectionString("FinTrackApp");
             services.AddDbContext<FinTrackDbContext>(opts=>opts.UseSqlServer(conString));
 
             return services;
