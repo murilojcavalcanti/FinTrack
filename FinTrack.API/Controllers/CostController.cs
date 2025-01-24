@@ -1,8 +1,8 @@
 ﻿using FinTrack.Application.Services.Commands.CostCommands.CreateCost;
 using FinTrack.Application.Services.Commands.CostCommands.DeleteCost;
 using FinTrack.Application.Services.Commands.CostCommands.UpdateCost;
-using FinTrack.Application.Services.Queries.GetAll;
-using FinTrack.Application.Services.Queries.GetById;
+using FinTrack.Application.Services.Queries.CostQueries.GetAll;
+using FinTrack.Application.Services.Queries.CostQueries.GetById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
