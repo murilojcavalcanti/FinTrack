@@ -7,15 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FinTrack.Application.Services.Queries.GetById
+namespace FinTrack.Application.Services.Queries.CostQueries.GetAll
 {
-    public class GetByIdCostQuery:IRequest<ResultViewModel<CostViewModel>>
+    public class GetAllCostQuery : IRequest<ResultViewModel<List<CostViewModel>>>
     {
-        public int CostId { get; set; }
-
-        public GetByIdCostQuery(int costId)
+        public GetAllCostQuery()
         {
-            CostId = costId;
         }
     }
 }
