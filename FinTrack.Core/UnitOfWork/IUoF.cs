@@ -11,6 +11,8 @@ namespace FinTrack.Core.UnitOfWork
     public interface IUoF
     {
         public ICostRepository CostRepository { get;}
+
+        public IReceiveRepository ReceiveRepository { get; }
         void Commit();
     }
 }

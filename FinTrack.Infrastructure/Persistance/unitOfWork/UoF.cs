@@ -16,6 +16,7 @@ namespace FinTrack.Infrastructure.Persistance.unitOfWork
 
         private IUserRepository _userRepository;
         private ICostRepository _costRepository;
+        private IReceiveRepository _ReceiveRepository;
         public UoF(FinTrackDbContext context)
         {
             _context = context;
@@ -36,6 +37,13 @@ namespace FinTrack.Infrastructure.Persistance.unitOfWork
                 return _costRepository = _costRepository ?? new CostRepository(_context);
             }
         }
+
+        public IReceiveRepository ReceiveRepository { get 
+            {
+                return _ReceiveRepository ?? new ReceiveRepository(_context);
+            } 
+        }
+
         public void Commit()
         {
             _context.SaveChanges();
