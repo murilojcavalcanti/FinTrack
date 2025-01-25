@@ -14,9 +14,14 @@ namespace FinTrack.Application.Services.Commands.ReceiveCommands.CreateReceive
     {
         private readonly IUoF _uoF;
 
+        public CreateReceiveHandler(IUoF uoF)
+        {
+            _uoF = uoF;
+        }
+
         public async Task<ResultViewModel<int>> Handle(CreateReceiveCommand request, CancellationToken cancellationToken)
         {
-            Receive Receive = request.ToEntity(); 
+            var Receive = request.ToEntity(); 
             await _uoF.ReceiveRepository.Insert(Receive);
             _uoF.Commit();
             return ResultViewModel<int>.Success(Receive.Id);
