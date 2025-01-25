@@ -18,8 +18,8 @@ namespace FinTrack.Application.Services.Commands.ReceiveCommands.UpdateReceive
         }
 
         public int ReceiveId { get; set; }
-        public string Description { get; private set; }
-        public decimal ValueReceive { get; private set; }
+        public string Description { get; set; }
+        public decimal ValueReceive { get; set; }
 
     }
 }
