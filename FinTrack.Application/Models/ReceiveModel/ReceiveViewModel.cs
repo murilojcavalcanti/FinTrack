@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinTrack.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +17,7 @@ namespace FinTrack.Application.Models.ReceiveModel
 
         public string Description { get; private set; }
         public decimal ValueReceive { get; private set; }
+
+        public static ReceiveViewModel FromEntity(Receive receive) => new(receive.Description,receive.ValueReceive);
     }
 }
