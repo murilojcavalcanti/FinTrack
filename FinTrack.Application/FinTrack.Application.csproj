@@ -15,4 +15,10 @@
     <PackageReference Include="MediatR" Version="12.4.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\BalanceModel\" />
+    <Folder Include="Models\UserModel\" />
+    <Folder Include="Services\Queries\ReceiveQueries\" />
+  </ItemGroup>
+
 </Project>

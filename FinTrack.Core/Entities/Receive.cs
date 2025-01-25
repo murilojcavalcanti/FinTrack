@@ -15,5 +15,10 @@ namespace FinTrack.Core.Entities
         }
         public string Description { get; private set; }
         public decimal ValueReceive { get; private set; }
+        public void Update(decimal value, string description)
+        {
+            ValueReceive = value;
+            Description = description;
+        }
     }
 }
