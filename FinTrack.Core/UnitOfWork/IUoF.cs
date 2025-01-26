@@ -13,6 +13,7 @@ namespace FinTrack.Core.UnitOfWork
         public ICostRepository CostRepository { get;}
 
         public IReceiveRepository ReceiveRepository { get; }
+        public IBalanceRepository BalanceRepository { get; }
         void Commit();
     }
 }
