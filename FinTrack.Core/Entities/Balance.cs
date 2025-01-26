@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace FinTrack.Core.Entities
 {
-    internal class Balance : BaseEntity
+    public class Balance : BaseEntity
     {
-        public Balance() : base()
+        public Balance(int month ,int year) : base()
         {
-            Month = DateTime.UtcNow.Month;
-            Year = DateTime.UtcNow.Year;
+            Month = month;
+            Year = year;
         }
         public int Month { get; private set; }
         public int Year { get; private set; }
