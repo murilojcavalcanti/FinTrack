@@ -1,13 +1,7 @@
 ﻿using FinTrack.Application.Models;
 using FinTrack.Application.Models.CostModel;
 using FinTrack.Core.UnitOfWork;
-using FinTrack.Infrastructure.Persistance.unitOfWork;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FinTrack.Application.Services.Queries.CostQueries.GetAll
 {
