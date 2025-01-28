@@ -18,7 +18,7 @@ namespace FinTrack.Application.Services.Commands.ReceiveCommands.UpdateReceive
         {
             Receive receive = await _uoF.ReceiveRepository.Get(r => r.Id == request.ReceiveId);
             if (receive == null) return ResultViewModel.Error("Receive Not Found!");
-            receive.Update(request.ValueReceive, request.Description);
+            receive.Update(request.ValueReceive, request.Description,request.IdBalance);
             await _uoF.ReceiveRepository.Update(receive);
             _uoF.Commit();
             return ResultViewModel.Success();

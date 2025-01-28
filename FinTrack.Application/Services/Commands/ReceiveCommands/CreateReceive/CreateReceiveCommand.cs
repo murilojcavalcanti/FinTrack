@@ -11,15 +11,16 @@ namespace FinTrack.Application.Services.Commands.ReceiveCommands.CreateReceive
 {
     public class CreateReceiveCommand:IRequest<ResultViewModel<int>>
     {
-        public CreateReceiveCommand(string description, decimal valueReceive)
+        public CreateReceiveCommand(string description, decimal valueReceive, int idBalance)
         {
             Description = description;
             ValueReceive = valueReceive;
+            IdBalance = idBalance;
         }
 
         public string Description { get; private set; }
         public decimal ValueReceive { get; private set; }
-
-        public Receive ToEntity() => new Receive(Description, ValueReceive);
+        public int IdBalance { get; set; }
+        public Receive ToEntity() => new Receive(Description, ValueReceive, IdBalance);
     }
 }
