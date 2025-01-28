@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace FinTrack.Application.Services.Queries.BalanceQueries.GetByIdBalance
 {
-    public class GetByIdBalanceHandler : IRequestHandler<GetByIdBalanceQuery, ResultViewModel<BalanceViewModel>>
+    public class GetByIdBalanceHandler : IRequestHandler<GetByIdBalanceQuery, ResultViewModel<BalanceDetailsViewModel>>
     {
         private readonly IUoF _uof;
 
@@ -20,11 +20,11 @@ namespace FinTrack.Application.Services.Queries.BalanceQueries.GetByIdBalance
             _uof = uof;
         }
 
-        public async Task<ResultViewModel<BalanceViewModel>> Handle(GetByIdBalanceQuery request, CancellationToken cancellationToken)
+        public async Task<ResultViewModel<BalanceDetailsViewModel>> Handle(GetByIdBalanceQuery request, CancellationToken cancellationToken)
         {
             Balance balance = await _uof.BalanceRepository.Get(b => b.Id == request.BalanceId); 
-            BalanceViewModel balanceView = BalanceViewModel.FromEntity(balance);
-            return ResultViewModel<BalanceViewModel>.Success(balanceView);
+            BalanceDetailsViewModel balanceView = BalanceDetailsViewModel.FromEntity(balance);
+            return ResultViewModel<BalanceDetailsViewModel>.Success(balanceView);
         }
     }
 }
