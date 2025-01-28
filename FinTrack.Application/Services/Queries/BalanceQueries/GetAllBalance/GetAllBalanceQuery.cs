@@ -4,7 +4,7 @@ using MediatR;
 
 namespace FinTrack.Application.Services.Queries.BalanceQueries.GetAllBalance
 {
-    public class GetAllBalanceQuery:IRequest<ResultViewModel<List<BalanceViewModel>>>
+    public class GetAllBalanceQuery:IRequest<ResultViewModel<List<BalanceDetailsViewModel>>>
     {
     }
 }
