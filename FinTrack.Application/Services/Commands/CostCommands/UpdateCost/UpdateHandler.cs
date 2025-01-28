@@ -21,7 +21,7 @@ namespace FinTrack.Application.Services.Commands.CostCommands.UpdateCost
         {
             var Cost = _Uof.CostRepository.Get(c => c.Id == request.IdCost);
             if (Cost.Result is null) return ResultViewModel.Error("Cost Not Found!");
-            Cost.Result.Update(request.PriceCost, request.DescriptionCost);
+            Cost.Result.Update(request.PriceCost, request.DescriptionCost,request.IdBalance);
             _Uof.CostRepository.Update(Cost.Result);
             return ResultViewModel.Success();
         }

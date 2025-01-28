@@ -1,4 +1,5 @@
 ﻿using FinTrack.Application.Models;
+using FinTrack.Core.Entities;
 using FinTrack.Core.Repositories;
 using FinTrack.Core.UnitOfWork;
 using MediatR;
@@ -21,7 +22,9 @@ namespace FinTrack.Application.Services.Commands.CostCommands.CreateCost
 
         public async Task<ResultViewModel<int>> Handle(CreateCostCommand request, CancellationToken cancellationToken)
         {
-            var cost = request.ToEntity();
+            Cost cost = request.ToEntity();
+            Balance balance = await _UoF.BalanceRepository.Get(b => b.Id == request.IdBalance);
+
             await _UoF.CostRepository.Insert(cost);
             _UoF.Commit();
             return ResultViewModel<int>.Success(cost.Id);
