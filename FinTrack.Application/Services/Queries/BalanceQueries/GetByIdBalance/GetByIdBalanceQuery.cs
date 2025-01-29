@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FinTrack.Application.Services.Queries.BalanceQueries.GetByIdBalance
 {
-    public class GetByIdBalanceQuery : IRequest<ResultViewModel<BalanceDetailsViewModel>>
+    public class GetByIdBalanceQuery : IRequest<ResultViewModel<BalanceViewModel>>
     {
         public int BalanceId { get; set; }
 
