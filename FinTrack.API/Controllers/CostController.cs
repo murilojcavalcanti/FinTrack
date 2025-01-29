@@ -25,27 +25,47 @@ namespace FinTrack.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateCost(CreateCostCommand command)
         {
-            var result = await _mediator.Send(command);
-            if (!result.IsSuccess) return BadRequest(result.Messsage);
-
-            return Ok(result);
+            try
+            {
+                var result = await _mediator.Send(command);
+                if (!result.IsSuccess) return BadRequest(result.Messsage);
+                return Ok(result);
+            }
+            catch
+            {
+                throw new ArgumentException("Erro ao completar processo");
+            }
         }
         // GET: CostController/GetAll/
         [HttpGet]
         public async Task<IActionResult> GetAllCost()
         {
-            var query = new GetAllCostQuery();
-            var result = await _mediator.Send(query);
+            try
+            {
+                var query = new GetAllCostQuery();
+                var result = await _mediator.Send(query);
 
-            return Ok(result);
+                return Ok(result.Data);
+            }
+            catch
+            {
+                throw new ArgumentException("Erro ao completar processo");
+            }
         }
 
         // GET: CostController/GetByID/
         [HttpGet("/GetById")]
         public async Task<IActionResult> GetByIdCost(GetByIdCostQuery query)
         {
-            var result = _mediator.Send(query);
-            return Ok(result);
+            try
+            {
+                var result = await _mediator.Send(query);
+                return Ok(result.Data);
+            }
+            catch
+            {
+                throw new ArgumentException("Erro ao completar processo");
+            }
         }
 
         // GET: CostController/GetByDate
@@ -65,18 +85,32 @@ namespace FinTrack.API.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateCost(UpdateCostCommand  command)
         {
-            var result = await _mediator.Send(command);
-            if (!result.IsSuccess) return BadRequest(result.Messsage);
-            return Ok(result);
+            try
+            {
+                var result = await _mediator.Send(command);
+                if (!result.IsSuccess) return BadRequest(result.Messsage);
+                return Ok(result.IsSuccess);
+            }
+            catch
+            {
+                throw new ArgumentException("Erro ao completar processo");
+            }
         }
 
         // DELETE: CostController/Delete/
         [HttpDelete]
         public async Task<IActionResult> DeleteCost(DeleteCostCommand command)
         {
-            var result = await _mediator.Send(command);
-            if (!result.IsSuccess) return BadRequest(result.Messsage);
-            return Ok(result);
+            try
+            {
+                var result = await _mediator.Send(command);
+                if (!result.IsSuccess) return BadRequest(result.Messsage);
+                return Ok(result.IsSuccess);
+            }
+            catch
+            {
+                throw new ArgumentException("Erro ao completar processo");
+            }
         }
     }
 }

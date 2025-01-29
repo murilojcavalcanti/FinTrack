@@ -22,23 +22,23 @@ namespace FinTrack.API.Controllers
         // POST: BalanceController/CreateReceive/
         [HttpPost("/CreateBalance")]
         public async Task<IActionResult> Create([FromBody] CreateBalanceCommand command)
-        {/*
+        {
             try
-            {*/
+            {
                 var result = _mediator.Send(command);
                 if (!result.Result.IsSuccess) return BadRequest(result.Result.Messsage);
                 return Ok(result);
 
-          /*  }
+            }
             catch
             {
                 throw new ArgumentException("Erro ao completar processo");
             }
-        */}
+        }
 
         // GET: BalanceController/GetAll/
         [HttpGet("/GetAllBalance")]
-        public async Task<IActionResult> GetAllReceives()
+        public async Task<IActionResult> GetAllBalance()
         {
             try
             {
@@ -55,7 +55,7 @@ namespace FinTrack.API.Controllers
 
         // GET: BalanceController/GetById/
         [HttpGet("/GetByIdBalance")]
-        public async Task<IActionResult> GetByIdReceives([FromBody] GetByIdBalanceQuery query)
+        public async Task<IActionResult> GetByIdBalance([FromBody] GetByIdBalanceQuery query)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace FinTrack.API.Controllers
 
         // PUT: BalanceController/Update/
         [HttpPut("/UpdateBalance")]
-        public async Task<IActionResult> UpdateReceive([FromBody] UpdateBalanceCommand command)
+        public async Task<IActionResult> UpdateBalance([FromBody] UpdateBalanceCommand command)
         {
             try
             {
@@ -87,7 +87,7 @@ namespace FinTrack.API.Controllers
 
         // GET: BalanceController/Delete
         [HttpDelete("/DeleteBalance")]
-        public async Task<IActionResult> DeleteReceive([FromBody] DeleteBalanceCommand command)
+        public async Task<IActionResult> DeleteBalance([FromBody] DeleteBalanceCommand command)
         {
             try
             {

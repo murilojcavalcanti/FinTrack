@@ -1,4 +1,5 @@
-﻿using FinTrack.Application.Services.Commands.ReceiveCommands.CreateReceive;
+﻿using FinTrack.Application.Models;
+using FinTrack.Application.Services.Commands.ReceiveCommands.CreateReceive;
 using FinTrack.Application.Services.Commands.ReceiveCommands.DeleteReceive;
 using FinTrack.Application.Services.Commands.ReceiveCommands.UpdateReceive;
 using FinTrack.Application.Services.Queries.ReceiveQueries.GetAll;
@@ -29,8 +30,7 @@ namespace FinTrack.API.Controllers
             {
                 var result = _mediator.Send(command);
                 if (!result.Result.IsSuccess) return BadRequest(result.Result.Messsage);
-                return Ok(result);
-
+                return Ok(result.Result);
             }
             catch
             {
@@ -45,9 +45,9 @@ namespace FinTrack.API.Controllers
             try
             {
                 var query = new GetAllReceiveQuery();
-                var result = _mediator.Send(query);
-                if (!result.Result.IsSuccess) return BadRequest(result.Result.Messsage);
-                return Ok(result);
+                var result = await _mediator.Send(query);
+                if (!result.IsSuccess) return BadRequest(result.Messsage);
+                return Ok(result.Data);
             }
             catch
             {
@@ -61,9 +61,9 @@ namespace FinTrack.API.Controllers
         {
             try
             {
-                var result = _mediator.Send(query);
-                if (!result.Result.IsSuccess) return BadRequest(result.Result.Messsage);
-                return Ok(result);
+                var result = await _mediator.Send(query);
+                if (!result.IsSuccess) return BadRequest(result.Messsage);
+                return Ok(result.Data);
             }
             catch
             {
@@ -77,9 +77,9 @@ namespace FinTrack.API.Controllers
         {
             try
             {
-                var result = _mediator.Send(command);
-                if (!result.Result.IsSuccess) return BadRequest(result.Result.Messsage);
-                return Ok(result);
+                var result = await _mediator.Send(command);
+                if (!result.IsSuccess) return BadRequest(result.Messsage);
+                return Ok(result.IsSuccess);
             }
             catch
             {
@@ -93,9 +93,9 @@ namespace FinTrack.API.Controllers
         {
             try
             {
-                var result = _mediator.Send(command);
-                if (!result.Result.IsSuccess) return BadRequest(result.Result.Messsage);
-                return Ok(result);
+                var result = await _mediator.Send(command);
+                if (!result.IsSuccess) return BadRequest(result.Messsage);
+                return Ok(result.IsSuccess);
             }
             catch
             {
