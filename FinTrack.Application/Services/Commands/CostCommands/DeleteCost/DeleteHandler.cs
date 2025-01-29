@@ -24,7 +24,10 @@ namespace FinTrack.Application.Services.Commands.CostCommands.DeleteCost
         {
             Cost Cost = await _Uof.CostRepository.Get(c => c.Id == request.CostId);
             if (Cost is null) return ResultViewModel.Error("Cost Not Found!");
-            _Uof.CostRepository.Delete(Cost);
+            Balance balance = await _Uof.BalanceRepository.Get(b => b.Id==Cost.IdBalance);
+            balance.RemoveCosts(Cost.PriceCost);
+            await _Uof.CostRepository.Delete(Cost);
+            await _Uof.BalanceRepository.Update(balance);
             _Uof.Commit();
             return ResultViewModel.Success();
         }
