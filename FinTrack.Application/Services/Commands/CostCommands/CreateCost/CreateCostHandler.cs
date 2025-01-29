@@ -24,8 +24,9 @@ namespace FinTrack.Application.Services.Commands.CostCommands.CreateCost
         {
             Cost cost = request.ToEntity();
             Balance balance = await _UoF.BalanceRepository.Get(b => b.Id == request.IdBalance);
-
+            balance.AddCosts(cost.PriceCost);
             await _UoF.CostRepository.Insert(cost);
+            await _UoF.BalanceRepository.Update(balance);
             _UoF.Commit();
             return ResultViewModel<int>.Success(cost.Id);
         }
