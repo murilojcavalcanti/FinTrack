@@ -9,17 +9,17 @@ namespace FinTrack.Application.Models.ReceiveModel
 {
     public class ReceiveViewModel
     {
-        public ReceiveViewModel(string description, decimal valueReceive, Balance balance)
+        public ReceiveViewModel(string description, decimal valueReceive, int idBalance)
         {
             Description = description;
             ValueReceive = valueReceive;
-            Balance = balance;
+            BalanceId = idBalance;
         }
 
         public string Description { get; set; }
         public decimal ValueReceive { get; set; }
-        public Balance Balance { get; set; }
+        public int BalanceId { get; set; }
 
-        public static ReceiveViewModel FromEntity(Receive receive) => new(receive.Description,receive.ValueReceive,receive.Balance);
+        public static ReceiveViewModel FromEntity(Receive receive) => new(receive.Description,receive.ValueReceive,receive.IdBalance);
     }
 }

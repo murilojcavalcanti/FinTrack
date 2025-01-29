@@ -9,14 +9,14 @@ namespace FinTrack.Application.Models.BalanceModel
 {
     public class BalanceViewModel
     {
-        public BalanceViewModel(int id, int month, int year, decimal? totalCosts, decimal? totalReceives, decimal? amountBalance)
+        public BalanceViewModel(int month, int year, decimal? totalCosts, decimal? totalReceives, decimal? amountBalance, int id)
         {
-            this.Id = id;
-            this.Month = month;
-            this.Year = year;
-            this.TotalCosts = totalCosts;
-            this.TotalReceives = totalReceives;
-            this.AmountBalance = amountBalance;
+            Month = month;
+            Year = year;
+            TotalCosts = totalCosts;
+            TotalReceives = totalReceives;
+            AmountBalance = amountBalance;
+            Id = id;
         }
 
         public int Id { get; set; }
