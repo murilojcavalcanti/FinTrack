@@ -21,8 +21,12 @@ namespace FinTrack.Application.Services.Commands.ReceiveCommands.CreateReceive
 
         public async Task<ResultViewModel<int>> Handle(CreateReceiveCommand request, CancellationToken cancellationToken)
         {
-            var Receive = request.ToEntity(); 
+            Receive Receive = request.ToEntity();
+            Balance balance = await _uoF.BalanceRepository.Get(b=>b.Id==request.IdBalance);
+            balance.AddReceives(Receive.ValueReceive);
+            balance.CalculateAmountBalance();
             await _uoF.ReceiveRepository.Insert(Receive);
+            await _uoF.BalanceRepository.Update(balance);
             _uoF.Commit();
             return ResultViewModel<int>.Success(Receive.Id);
         }

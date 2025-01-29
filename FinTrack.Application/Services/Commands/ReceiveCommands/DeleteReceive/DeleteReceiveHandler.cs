@@ -23,7 +23,10 @@ namespace FinTrack.Application.Services.Commands.ReceiveCommands.DeleteReceive
         {
             Receive receive = await _uof.ReceiveRepository.Get(r=>r.Id==request.Receiveid);
             if (receive == null) return ResultViewModel.Error("Receive Not Found!");
-            _uof.ReceiveRepository.Delete(receive);
+            Balance balance = await _uof.BalanceRepository.Get(b=>b.Id == receive.IdBalance);
+            balance.RemoveReceives(receive.ValueReceive);
+            await _uof.ReceiveRepository.Delete(receive);
+            await _uof.BalanceRepository.Update(balance);
             _uof.Commit();
             return ResultViewModel.Success();
 
