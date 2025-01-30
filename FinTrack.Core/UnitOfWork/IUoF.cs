@@ -14,6 +14,7 @@ namespace FinTrack.Core.UnitOfWork
 
         public IReceiveRepository ReceiveRepository { get; }
         public IBalanceRepository BalanceRepository { get; }
+        public IUserRepository UserRepository { get; }
         void Commit();
     }
 }
