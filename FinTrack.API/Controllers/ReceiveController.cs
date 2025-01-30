@@ -12,6 +12,9 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace FinTrack.API.Controllers
 {
+
+    [Route("Api/[controller]")]
+    [ApiController]
     public class ReceiveController : ControllerBase
     {
         private readonly IMediator _mediator;

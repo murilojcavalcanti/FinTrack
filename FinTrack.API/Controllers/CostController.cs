@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FinTrack.API.Controllers
 {
-    [Route("Api/Cost")]
+    [Route("Api/[controller]")]
     [ApiController]
 
     public class CostController : ControllerBase
