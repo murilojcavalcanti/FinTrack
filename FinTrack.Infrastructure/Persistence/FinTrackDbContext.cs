@@ -31,11 +31,12 @@ namespace FinTrack.Infrastructure.Persistence
                 .HasForeignKey(C => C.IdBalance)
                 .OnDelete(DeleteBehavior.Restrict);
             });
-
+            
             base.OnModelCreating(builder);
         }
         public DbSet<Cost> Costs { get; set; }
         public DbSet<Receive> Receives { get; set; }
         public DbSet<Balance> Balances { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
