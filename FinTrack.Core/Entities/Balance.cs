@@ -11,16 +11,18 @@ namespace FinTrack.Core.Entities
 {
     public class Balance : BaseEntity
     {
-        public Balance(int month ,int year) : base()
+        public Balance(int month, int year, int userId) : base()
         {
             Month = month;
             Year = year;
+            UserId = userId;
         }
         [Range(1,12,ErrorMessage ="Os valores de Meses do ano devem ser entre 1 e 12")]
         public int Month { get; private set; }
         [Range(1900,2300,ErrorMessage ="o valor minimo é 1900 e o máximo 2300")]
         public int Year { get; private set; }
-
+        public int UserId { get;private set; }
+        public User User { get; private set; }
         public List<Cost> Costs { get; private set; }
         public List<Receive> Receives { get; private set; }
         public Decimal TotalCosts{ get; private set; }
