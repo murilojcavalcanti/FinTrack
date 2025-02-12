@@ -24,6 +24,16 @@ namespace FinTrack.Infrastructure.Persistence
                 .OnDelete(DeleteBehavior.Restrict);
             });
 
+            builder.Entity<Balance>(e =>
+            {
+                e.HasKey(b => b.Id);
+
+                e.HasOne(b => b.User)
+                .WithMany(u => u.Balances)
+                .HasForeignKey(b => b.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+            });
+
             builder.Entity<Cost>(e =>
             {
                 e.HasKey(C => C.Id);
