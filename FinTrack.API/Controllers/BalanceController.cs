@@ -23,17 +23,17 @@ namespace FinTrack.API.Controllers
         [HttpPost("/CreateBalance")]
         public async Task<IActionResult> Create([FromBody] CreateBalanceCommand command)
         {
-            try
-            {
+            /*try
+            {*/
                 var result = _mediator.Send(command);
                 if (!result.Result.IsSuccess) return BadRequest(result.Result.Messsage);
                 return Ok(result);
 
-            }
+            /*}
             catch
             {
                 throw new ArgumentException("Erro ao completar processo");
-            }
+            }*/
         }
 
         // GET: BalanceController/GetAll/
@@ -43,8 +43,8 @@ namespace FinTrack.API.Controllers
             try
             {
                 var query = new GetAllBalanceQuery();
-                var result = _mediator.Send(query);
-                if (!result.Result.IsSuccess) return BadRequest(result.Result.Messsage);
+                var result = await  _mediator.Send(query);
+                if (!result.IsSuccess) return BadRequest(result.Messsage);
                 return Ok(result);
             }
             catch
@@ -59,8 +59,8 @@ namespace FinTrack.API.Controllers
         {
             try
             {
-                var result = _mediator.Send(query);
-                if (!result.Result.IsSuccess) return BadRequest(result.Result.Messsage);
+                var result = await _mediator.Send(query);
+                if (!result.IsSuccess) return BadRequest(result.Messsage);
                 return Ok(result);
             }
             catch
@@ -75,8 +75,8 @@ namespace FinTrack.API.Controllers
         {
             try
             {
-                var result = _mediator.Send(command);
-                if (!result.Result.IsSuccess) return BadRequest(result.Result.Messsage);
+                var result = await _mediator.Send(command);
+                if (!result.IsSuccess) return BadRequest(result.Messsage);
                 return Ok(result);
             }
             catch
@@ -91,8 +91,8 @@ namespace FinTrack.API.Controllers
         {
             try
             {
-                var result = _mediator.Send(command);
-                if (!result.Result.IsSuccess) return BadRequest(result.Result.Messsage);
+                var result = await _mediator.Send(command);
+                if (!result.IsSuccess) return BadRequest(result.Messsage);
                 return Ok(result);
             }
             catch
