@@ -1,14 +1,10 @@
-﻿using FinTrack.Application.Models;
-using FinTrack.Application.Services.Commands.ReceiveCommands.CreateReceive;
+﻿using FinTrack.Application.Services.Commands.ReceiveCommands.CreateReceive;
 using FinTrack.Application.Services.Commands.ReceiveCommands.DeleteReceive;
 using FinTrack.Application.Services.Commands.ReceiveCommands.UpdateReceive;
 using FinTrack.Application.Services.Queries.ReceiveQueries.GetAll;
 using FinTrack.Application.Services.Queries.ReceiveQueries.GetById;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace FinTrack.API.Controllers
 {
@@ -37,7 +33,7 @@ namespace FinTrack.API.Controllers
             }
             catch
             {
-                throw new ArgumentException("Erro ao completar processo");
+                throw;
             }
         }
         
@@ -54,7 +50,7 @@ namespace FinTrack.API.Controllers
             }
             catch
             {
-                throw new ArgumentException("Erro ao completar processo");
+                throw;
             }
         }
         
@@ -70,7 +66,7 @@ namespace FinTrack.API.Controllers
             }
             catch
             {
-                throw new ArgumentException("Erro ao completar processo");
+                throw;
             }
         }
 
@@ -86,7 +82,7 @@ namespace FinTrack.API.Controllers
             }
             catch
             {
-                throw new ArgumentException("Erro ao completar processo");
+                throw;
             }
         }
 
@@ -102,7 +98,7 @@ namespace FinTrack.API.Controllers
             }
             catch
             {
-                throw new ArgumentException("Erro ao completar processo");
+                throw;
             }
         }
     }

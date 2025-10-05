@@ -1,11 +1,4 @@
-﻿using FinTrack.Core.Enums;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace FinTrack.Core.Entities
 {
@@ -16,6 +9,11 @@ namespace FinTrack.Core.Entities
             Month = month;
             Year = year;
             UserId = userId;
+        }
+        public Balance(int month, int year) : base()
+        {
+            Month = month;
+            Year = year;
         }
         [Range(1,12,ErrorMessage ="Os valores de Meses do ano devem ser entre 1 e 12")]
         public int Month { get; private set; }
@@ -55,6 +53,10 @@ namespace FinTrack.Core.Entities
         public void CalculateAmountBalance()
         {
             AmountBalance = TotalReceives - TotalCosts;
+        }
+        public void SetUser(int userId)
+        {
+            UserId = userId;
         }
     }
 }

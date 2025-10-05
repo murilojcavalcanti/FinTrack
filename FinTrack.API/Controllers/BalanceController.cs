@@ -4,12 +4,14 @@ using FinTrack.Application.Services.Commands.BalanceCommands.UpdateBalance;
 using FinTrack.Application.Services.Queries.BalanceQueries.GetAllBalance;
 using FinTrack.Application.Services.Queries.BalanceQueries.GetByIdBalance;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinTrack.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class BalanceController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -23,17 +25,16 @@ namespace FinTrack.API.Controllers
         [HttpPost("/CreateBalance")]
         public async Task<IActionResult> Create([FromBody] CreateBalanceCommand command)
         {
-            /*try
-            {*/
+            try
+            {
                 var result = _mediator.Send(command);
                 if (!result.Result.IsSuccess) return BadRequest(result.Result.Messsage);
                 return Ok(result);
-
-            /*}
+            }
             catch
             {
-                throw new ArgumentException("Erro ao completar processo");
-            }*/
+                throw;
+            }
         }
 
         // GET: BalanceController/GetAll/
@@ -49,7 +50,7 @@ namespace FinTrack.API.Controllers
             }
             catch
             {
-                throw new ArgumentException("Erro ao completar processo");
+                throw;
             }
         }
 
@@ -65,7 +66,7 @@ namespace FinTrack.API.Controllers
             }
             catch
             {
-                throw new ArgumentException("Erro ao completar processo");
+                throw ;
             }
         }
 
@@ -81,7 +82,7 @@ namespace FinTrack.API.Controllers
             }
             catch
             {
-                throw new ArgumentException("Erro ao completar processo");
+                throw;
             }
         }
 
@@ -97,7 +98,7 @@ namespace FinTrack.API.Controllers
             }
             catch
             {
-                throw new ArgumentException("Erro ao completar processo");
+                throw;
             }
         }
     }

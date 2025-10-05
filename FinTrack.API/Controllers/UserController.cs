@@ -1,11 +1,6 @@
-﻿using FinTrack.Application.Services.Commands.ReceiveCommands.CreateReceive;
-using FinTrack.Application.Services.Commands.ReceiveCommands.DeleteReceive;
-using FinTrack.Application.Services.Commands.ReceiveCommands.UpdateReceive;
-using FinTrack.Application.Services.Commands.UserCommands.CreateUser;
+﻿using FinTrack.Application.Services.Commands.UserCommands.CreateUser;
 using FinTrack.Application.Services.Commands.UserCommands.DeleteUser;
 using FinTrack.Application.Services.Commands.UserCommands.UpdateUser;
-using FinTrack.Application.Services.Queries.ReceiveQueries.GetAll;
-using FinTrack.Application.Services.Queries.ReceiveQueries.GetById;
 using FinTrack.Application.Services.Queries.UsersQueries.GetAllUsersQuery;
 using FinTrack.Application.Services.Queries.UsersQueries.GetByIdUsersQuery;
 using MediatR;
@@ -37,7 +32,7 @@ namespace FinTrack.API.Controllers
             }
             catch
             {
-                throw new ArgumentException("Erro ao completar processo");
+                throw;
             }
         }
 
@@ -54,7 +49,7 @@ namespace FinTrack.API.Controllers
             }
             catch
             {
-                throw new ArgumentException("Erro ao completar processo");
+                throw;
             }
         }
 
@@ -70,7 +65,7 @@ namespace FinTrack.API.Controllers
             }
             catch
             {
-                throw new ArgumentException("Erro ao completar processo");
+                throw;
             }
         }
 
@@ -86,7 +81,7 @@ namespace FinTrack.API.Controllers
             }
             catch
             {
-                throw new ArgumentException("Erro ao completar processo");
+                throw;
             }
         }
 
@@ -102,7 +97,7 @@ namespace FinTrack.API.Controllers
             }
             catch
             {
-                throw new ArgumentException("Erro ao completar processo");
+                throw;
             }
         }
     }

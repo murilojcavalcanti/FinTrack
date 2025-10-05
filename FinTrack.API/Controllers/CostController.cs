@@ -33,7 +33,7 @@ namespace FinTrack.API.Controllers
             }
             catch
             {
-                throw new ArgumentException("Erro ao completar processo");
+                throw;
             }
         }
         // GET: CostController/GetAll/
@@ -49,7 +49,7 @@ namespace FinTrack.API.Controllers
             }
             catch
             {
-                throw new ArgumentException("Erro ao completar processo");
+                throw;
             }
         }
 
@@ -64,7 +64,7 @@ namespace FinTrack.API.Controllers
             }
             catch
             {
-                throw new ArgumentException("Erro ao completar processo");
+                throw;
             }
         }
 
@@ -93,7 +93,7 @@ namespace FinTrack.API.Controllers
             }
             catch
             {
-                throw new ArgumentException("Erro ao completar processo");
+                throw;
             }
         }
 
@@ -109,7 +109,7 @@ namespace FinTrack.API.Controllers
             }
             catch
             {
-                throw new ArgumentException("Erro ao completar processo");
+                throw;
             }
         }
     }

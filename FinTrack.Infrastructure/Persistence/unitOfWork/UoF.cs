@@ -12,9 +12,13 @@ namespace FinTrack.Infrastructure.Persistence.unitOfWork
         private ICostRepository _costRepository;
         private IReceiveRepository _ReceiveRepository;
         private IBalanceRepository _BalanceRepository;
-        public UoF(FinTrackDbContext context)
+        public UoF(FinTrackDbContext context, IUserRepository userRepository, ICostRepository costRepository, IReceiveRepository receiveRepository, IBalanceRepository balanceRepository)
         {
             _context = context;
+            _userRepository = userRepository;
+            _costRepository = costRepository;
+            _ReceiveRepository = receiveRepository;
+            _BalanceRepository = balanceRepository;
         }
 
         public IUserRepository UserRepository
