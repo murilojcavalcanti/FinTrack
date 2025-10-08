@@ -55,7 +55,7 @@ namespace FinTrack.API.Controllers
 
         // GET: UserController/GetByIdUser/
         [HttpGet("/GetByIdUser")]
-        public async Task<IActionResult> GetByIdReceives([FromBody] GetByIdUserQuery query)
+        public async Task<IActionResult> GetByIdReceives([FromBody] GetByEmailUserQuery query)
         {
             try
             {

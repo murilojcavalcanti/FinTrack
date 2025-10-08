@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace FinTrack.Application.Services.Commands.LoginCommands
 {
-    public class LoginCommand
+    public class LoginCommand:IRequest<string>
     {
         public LoginCommand(string username, string password)
         {

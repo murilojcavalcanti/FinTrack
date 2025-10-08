@@ -3,11 +3,6 @@ using FinTrack.Application.Models.UserModel;
 using FinTrack.Core.Entities;
 using FinTrack.Core.UnitOfWork;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FinTrack.Application.Services.Queries.UsersQueries.GetByIdUsersQuery
 {
