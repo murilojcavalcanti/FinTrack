@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FinTrack.Core.Repositories;
+﻿using FinTrack.Core.Repositories;
 using FinTrack.Core.UnitOfWork;
 using FinTrack.Infrastructure.Persistence;
 using FinTrack.Infrastructure.Persistence.Repository;
