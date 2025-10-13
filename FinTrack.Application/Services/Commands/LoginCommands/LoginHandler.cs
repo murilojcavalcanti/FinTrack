@@ -1,20 +1,16 @@
 ﻿using FinTrack.Application.Services.Queries.UsersQueries.GetByIdUsersQuery;
+using FinTrack.Core.Auth;
 using FinTrack.Infrastructure.Auth;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FinTrack.Application.Services.Commands.LoginCommands
 {
     public class LoginHandler : IRequestHandler<LoginCommand, string>
     {
         private readonly IMediator mediator;
-        private readonly AuthService authService;
+        private readonly IAuthService authService;
 
-        public LoginHandler(IMediator mediator, AuthService authService)
+        public LoginHandler(IMediator mediator, IAuthService authService)
         {
             this.mediator = mediator;
             this.authService = authService;
@@ -43,7 +39,6 @@ namespace FinTrack.Application.Services.Commands.LoginCommands
             }
 
                 return null;
-            // Retorne um token, mensagem de sucesso, ou o que for necessário
         }
     }
 }
