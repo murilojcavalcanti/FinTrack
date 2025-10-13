@@ -1,5 +1,7 @@
-﻿using FinTrack.Core.Repositories;
+﻿using FinTrack.Core.Auth;
+using FinTrack.Core.Repositories;
 using FinTrack.Core.UnitOfWork;
+using FinTrack.Infrastructure.Auth;
 using FinTrack.Infrastructure.Persistence;
 using FinTrack.Infrastructure.Persistence.Repository;
 using FinTrack.Infrastructure.Persistence.unitOfWork;
@@ -27,6 +29,7 @@ namespace FinTrack.Infrastructure
         public static IServiceCollection AddRepositories(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IAuthService, AuthService>();
             return services;
         }
         public static IServiceCollection AddUnitOfWork(this IServiceCollection services, IConfiguration configuration)
