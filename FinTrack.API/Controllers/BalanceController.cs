@@ -11,7 +11,7 @@ namespace FinTrack.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class BalanceController : ControllerBase
     {
         private readonly IMediator _mediator;
