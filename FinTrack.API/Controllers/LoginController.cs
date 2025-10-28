@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FinTrack.Application.Services.Commands.LoginCommands;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinTrack.API.Controllers
@@ -7,12 +8,20 @@ namespace FinTrack.API.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
+        private readonly IMediator _mediator;
+
+        public LoginController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+
         [HttpPost("/Login")]
-        public IActionResult Login([FromBody] string user)
+        public async Task<IActionResult> LoginAsync(LoginCommand login)
         {
             try
             {
-                return Ok(new { Message = "Login successful", User = user });
+                var token = await _mediator.Send(login);
+                return Ok(new { Message = $"{token}"});
             }
             catch (Exception ex)
             {

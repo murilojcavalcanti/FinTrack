@@ -27,9 +27,9 @@ namespace FinTrack.Infrastructure.Persistence.Repository
             return await _context.Set<T>().Where(e => e.IsActive == true).AsNoTracking().ToListAsync();
         }
 
-        public async Task<T> Get(Expression<Func<T, bool>> predicate)
+        public Task<T> Get(Expression<Func<T, bool>> predicate)
         {
-            return await _context.Set<T>().Where(e => e.IsActive == true).SingleOrDefaultAsync(predicate);
+            return _context.Set<T>().Where(e => e.IsActive == true).SingleOrDefaultAsync(predicate);   
         }
 
 

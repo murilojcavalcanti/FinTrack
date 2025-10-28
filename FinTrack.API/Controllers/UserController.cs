@@ -22,7 +22,7 @@ namespace FinTrack.API.Controllers
 
         // POST: UserController/CreateUser/
         [HttpPost("/CreateUser")]
-        public async Task<IActionResult> CreateUser([FromBody] CreateUserCommand command)
+        public async Task<IActionResult> CreateUser(CreateUserCommand command)
         {
             try
             {
@@ -55,7 +55,7 @@ namespace FinTrack.API.Controllers
 
         // GET: UserController/GetByIdUser/
         [HttpGet("/GetByIdUser")]
-        public async Task<IActionResult> GetByIdReceives([FromBody] GetByEmailUserQuery query)
+        public async Task<IActionResult> GetByIdReceives(GetByIdUserQuery query)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace FinTrack.API.Controllers
 
         // PUT: UserController/UpdateUser/
         [HttpPut("/UpdateUser")]
-        public async Task<IActionResult> UpdateUser([FromBody] UpdateUserCommand command)
+        public async Task<IActionResult> UpdateUser(UpdateUserCommand command)
         {
             try
             {
@@ -87,7 +87,7 @@ namespace FinTrack.API.Controllers
 
         // GET: UserController/DeleteUser
         [HttpDelete("/DeleteUser")]
-        public async Task<IActionResult> DeleteUser([FromBody] DeleteUserCommand command)
+        public async Task<IActionResult> DeleteUser(DeleteUserCommand command)
         {
             try
             {

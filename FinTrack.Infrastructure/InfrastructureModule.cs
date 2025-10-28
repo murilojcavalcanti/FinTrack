@@ -29,6 +29,10 @@ namespace FinTrack.Infrastructure
         public static IServiceCollection AddRepositories(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICostRepository, CostRepository>();
+            services.AddScoped<IReceiveRepository, ReceiveRepository>();
+            services.AddScoped<IBalanceRepository, BalanceRepository>();
             services.AddScoped<IAuthService, AuthService>();
             return services;
         }
