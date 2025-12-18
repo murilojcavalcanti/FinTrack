@@ -42,6 +42,7 @@ namespace FinTrack.Infrastructure.Persistence.Repository
         {
             Entity.setAsDeleted();
             _context.Set<BaseEntity>().Update(Entity);
+            
         }
     }
 }

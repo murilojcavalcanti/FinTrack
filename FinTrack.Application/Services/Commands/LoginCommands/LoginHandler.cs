@@ -1,19 +1,18 @@
-﻿using FinTrack.Application.Services.Queries.UsersQueries.GetByIdUsersQuery;
-using FinTrack.Core.Auth;
-using FinTrack.Infrastructure.Auth;
+﻿using FinTrack.Core.Auth;
+using FinTrack.Core.UnitOfWork;
 using MediatR;
 
 namespace FinTrack.Application.Services.Commands.LoginCommands
 {
     public class LoginHandler : IRequestHandler<LoginCommand, string>
     {
-        private readonly IMediator mediator;
+        private readonly IUoF _uof;
         private readonly IAuthService authService;
 
-        public LoginHandler(IMediator mediator, IAuthService authService)
+        public LoginHandler(IAuthService authService, IUoF uof)
         {
-            this.mediator = mediator;
             this.authService = authService;
+            _uof = uof;
         }
 
         public async Task<string> Handle(LoginCommand request, CancellationToken cancellationToken)
@@ -22,23 +21,22 @@ namespace FinTrack.Application.Services.Commands.LoginCommands
             request.Password = authService.ComputeHash(request.Password);
 
             // Busca o usuário pelo e-mail (Username)
-            GetByEmailUserQuery getByEmail = new(request.Username);
-            var user = await mediator.Send(getByEmail);
+            var user = await _uof.UserRepository.Get(u=>u.Email==request.Username);
             
             if (user == null)
             {
-                return null;
+                return "Usuario ou senha incorretos";
             }
 
             // Aqui você pode validar a senha, gerar token, etc.
             // Exemplo de validação simples (NÃO recomendado para produção):
-            if (user.Data.Password == request.Password)
+            if (user.Password == request.Password)
             {
-                var token = authService.GenerateToken(user.Data.Email, user.Data.Id, user.Data.Role);
-                return "Login realizado com sucesso";
+                var token = authService.GenerateToken(user.Email, user.Id, user.Role);
+                return $"Login realizado com sucesso. Token:{token}";
             }
 
-                return null;
+            return "Usuario ou senha incorretos";
         }
     }
 }

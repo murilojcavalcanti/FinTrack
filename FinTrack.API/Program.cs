@@ -1,5 +1,6 @@
 using FinTrack.Application;
 using FinTrack.Infrastructure;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +11,17 @@ builder.Services.AddInfrasctructure(builder.Configuration)
     .AddApplication();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(opts =>
+{
+    opts.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Name="Auth",
+        Type=SecuritySchemeType.Http,
+        Scheme="Bearer",
+        BearerFormat="JWT",
+        In=ParameterLocation.Header
+    });
+});
 
 var app = builder.Build();
 
@@ -23,6 +34,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

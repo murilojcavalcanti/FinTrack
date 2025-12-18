@@ -1,7 +1,6 @@
 ﻿using FinTrack.Application.Models;
 using FinTrack.Application.Services.Commands.CostCommands.CreateCost;
 using FinTrack.Core.Auth;
-using FinTrack.Infrastructure.Auth;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
